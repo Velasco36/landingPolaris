@@ -1,0 +1,153 @@
+/* landing.css */
+
+.model-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-1section {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.model-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ========== TEXTOS LATERALES ========== */
+
+.side-text {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-text.left-text {
+  left: 20px;
+}
+
+.side-text.right-text {
+  right: 20px;
+}
+
+.text-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: scrollUp 8s linear infinite;
+}
+
+.left-text .text-scroll {
+  animation: scrollUp 8s linear infinite;
+}
+
+.right-text .text-scroll {
+  animation: scrollDown 8s linear infinite;
+}
+
+.text-scroll span {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.text-scroll span:hover {
+  opacity: 1;
+}
+
+/* Animación hacia arriba */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Animación hacia abajo */
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ========== VARIANTE ELEGANTE ========== */
+
+.side-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, #1a1a1a, transparent);
+  opacity: 0.3;
+}
+
+.side-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to top, transparent, #1a1a1a, transparent);
+  opacity: 0.3;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  .side-text {
+    width: 40px;
+  }
+
+  .side-text.left-text {
+    left: 10px;
+  }
+
+  .side-text.right-text {
+    right: 10px;
+  }
+
+  .text-scroll span {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .text-scroll {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-text {
+    display: none;
+  }
+}
